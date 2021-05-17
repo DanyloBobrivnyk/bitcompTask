@@ -8,7 +8,7 @@
     <staff id="13">
         <firstname>Roman</firstname>
         <lastname>Kuznetsov</lastname>
-        <nickname>Rovein</nickname>
+        <nickname>Rova</nickname>
         <salary currency="USD">200000</salary>
     </staff>
 </company>
