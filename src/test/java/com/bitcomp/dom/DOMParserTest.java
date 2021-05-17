@@ -1,5 +1,6 @@
 package com.bitcomp.dom;
 
+import com.bitcomp.parser.dom.DOMParser;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

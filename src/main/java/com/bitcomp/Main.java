@@ -1,6 +1,9 @@
 package com.bitcomp;
 
-import com.bitcomp.dom.DOMParser;
+import com.bitcomp.entity.ParseResult;
+import com.bitcomp.parser.dom.DOMParser;
+
+import java.io.File;
 
 
 public class Main {
@@ -10,7 +13,11 @@ public class Main {
             {
                 try
                 {
-                    DOMParser.parse("src/main/resources/" + args[0], args[1]);
+                    ClassLoader classLoader = Main.class.getClassLoader();
+                    File file = new File(classLoader.getResource(args[0]).getFile());
+
+                    ParseResult parseResult = DOMParser.parse(file.getPath(), args[1]);
+                    System.out.println(parseResult);
                 }
                 catch (Exception e)
                 {

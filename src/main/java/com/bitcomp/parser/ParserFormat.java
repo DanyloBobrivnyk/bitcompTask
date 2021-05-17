@@ -1,6 +1,5 @@
-package com.bitcomp;
+package com.bitcomp.parser;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ParserFormat {
