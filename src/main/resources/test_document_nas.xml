@@ -1,0 +1,22 @@
+<company>
+    <staff id="12">
+        <revealed_data>
+            <name>Danylo</name>
+            <surname>Bobrivnyk</surname>
+        </revealed_data>
+        <hidden_data>
+            <alterego>lolka</alterego>
+            <payment currency="USD">100000</payment>
+        </hidden_data>
+    </staff>
+    <staff id="13">
+        <revealed_data>
+            <name>Roman</name>
+            <surname>Romanovski</surname>
+        </revealed_data>
+        <hidden_data>
+            <alterego>rovein</alterego>
+            <payment currency="USD">2228</payment>
+        </hidden_data>
+    </staff>
+</company>
