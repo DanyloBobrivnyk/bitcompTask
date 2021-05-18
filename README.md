@@ -7,6 +7,9 @@ IntelliJ Idea Configuration
 or
 
 You may start the application from console,
-run this command from **target** directory : java -jar bitcompXmlParseTask-1.0-jar-with-dependencies.jar "file_name" "file_format"
-*Here is the example with arguments:  java -jar bitcompXmlParseTask-1.0-jar-with-dependencies.jar parcel_nas.xml nas
+###
+run this command from **target** directory : **java -jar bitcompXmlParseTask-1.0-jar-with-dependencies.jar "file_name" "file_format"**
+
+###
+*Here is the example with arguments:  ***java -jar bitcompXmlParseTask-1.0-jar-with-dependencies.jar parcel_nas.xml nas***
 
