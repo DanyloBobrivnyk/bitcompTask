@@ -13,5 +13,7 @@ java -jar bitcompXmlParseTask-1.0-jar-with-dependencies.jar **"file_name"** **"f
 
 **Example with arguments :** java -jar bitcompXmlParseTask-1.0-jar-with-dependencies.jar **parcel_nas.xml** **nas**
 
+**New file format may be defined in ParserFormat class with using "defineFormatDependecies" function in default constructor.
+**Also it's possible to add new fields to parse, if we want to.
 
 
