@@ -4,6 +4,7 @@ import com.bitcomp.entity.ParseResult;
 import com.bitcomp.parser.dom.DOMParser;
 
 import java.io.File;
+import java.io.InputStream;
 
 
 public class Main {
@@ -13,10 +14,12 @@ public class Main {
             {
                 try
                 {
-                    ClassLoader classLoader = Main.class.getClassLoader();
-                    File file = new File(classLoader.getResource(args[0]).getFile());
+                    Main app = new Main();
+                    String fileName = args[0];
 
-                    ParseResult parseResult = DOMParser.parse(file.getPath(), args[1]);
+                    InputStream is = app.getFileFromResourceAsStream(fileName);
+
+                    ParseResult parseResult = DOMParser.parse(is, args[1]);
                     System.out.println(parseResult);
                 }
                 catch (Exception e)
@@ -24,5 +27,20 @@ public class Main {
                     e.printStackTrace();
                 }
             }
+    }
+
+    public InputStream getFileFromResourceAsStream(String fileName) {
+
+        // The class loader that loaded the class
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+
+        // the stream holding the file content
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
+        }
+
     }
 }
