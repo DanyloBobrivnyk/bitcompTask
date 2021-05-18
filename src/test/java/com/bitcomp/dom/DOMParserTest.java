@@ -7,21 +7,20 @@ import org.junit.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Locale;
 
 
 public class DOMParserTest {
-    private static final ClassLoader classLoader = Main.class.getClassLoader();
-    private static File file;
-
+    Main app = new Main();
 
     @Test
     public void parseXmlFileAAA() throws Exception
     {
-        file = new File(classLoader.getResource("source_data_aaa.xml").getFile());
+        InputStream is = app.getFileFromResourceAsStream("source_data_aaa.xml");
 
-        ParseResult actualResult = DOMParser.parse(file.getPath(), "aaa");
+        ParseResult actualResult = DOMParser.parse(is, "aaa");
 
         ParseResult expectedResult = new ParseResult();
         expectedResult.setAreaNumber("05453300101559______");
@@ -37,9 +36,10 @@ public class DOMParserTest {
     @Test
     public void parseXmlFileNAS() throws Exception
     {
-        file = new File(classLoader.getResource("source_data_nas.xml").getFile());
+        InputStream is = app.getFileFromResourceAsStream("source_data_nas.xml");
 
-        ParseResult actualResult = DOMParser.parse(file.getPath(), "nas");
+
+        ParseResult actualResult = DOMParser.parse(is, "nas");
 
         ParseResult expectedResult = new ParseResult();
         expectedResult.setAreaNumber("095653___05443______");

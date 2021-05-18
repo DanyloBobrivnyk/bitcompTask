@@ -71,9 +71,9 @@ public class ParseResult {
     @Override
     public String toString() {
         return "ParseResult: \n{" + "areaNumber='" + areaNumber + '\''
-                + ", areaSize='" + areaSize + '\'' + ", landNumber='"
-                + landNumber + '\'' + ", precinctNumber='" + precinctNumber
-                + '\'' + ", districtNumber='" + districtNumber + '\''
-                + ", geoMarkNumber='" + geoMarkNumber + '\'' + '}';
+                + ",\n areaSize='" + areaSize + '\'' + ",\n landNumber='"
+                + landNumber + '\'' + ",\n precinctNumber='" + precinctNumber
+                + '\'' + ",\n districtNumber='" + districtNumber + '\''
+                + ",\n geoMarkNumber='" + geoMarkNumber + '\'' + '}';
     }
 }
