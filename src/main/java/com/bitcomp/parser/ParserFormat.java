@@ -1,6 +1,5 @@
-package com.bitcomp;
+package com.bitcomp.parser;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ParserFormat {
@@ -23,7 +22,7 @@ public class ParserFormat {
                         "gemarkungsnummer");
                 break;
             default:
-                System.out.println("Default statement invoked...");
+                System.out.println("Parse Format default statement invoked...");
                 break;
         }
     }

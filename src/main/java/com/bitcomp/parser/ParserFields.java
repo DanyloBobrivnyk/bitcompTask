@@ -1,4 +1,4 @@
-package com.bitcomp;
+package com.bitcomp.parser;
 
 public enum ParserFields {
     AREA_NUMBER,
