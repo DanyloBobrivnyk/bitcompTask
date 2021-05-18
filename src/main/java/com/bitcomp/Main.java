@@ -1,40 +1,28 @@
 package com.bitcomp;
 
-import com.bitcomp.dom.DOMParser;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
+import com.bitcomp.entity.ParseResult;
+import com.bitcomp.parser.dom.DOMParser;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
+import java.io.File;
+
 
 public class Main {
 
     public static void main(String[] args) {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            if(args.length > 1)
+            {
+                try
+                {
+                    ClassLoader classLoader = Main.class.getClassLoader();
+                    File file = new File(classLoader.getResource(args[0]).getFile());
 
-        try
-        {
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse("src/main/resources/"+args[0]);
-            //add reading from arguments
-            ParserFormat parserFormat = new ParserFormat(args[1]);
-
-            DOMParser.parse(doc, parserFormat);
-        }
-        catch (ParserConfigurationException e)
-        {
-            e.printStackTrace();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        catch (SAXException e)
-        {
-            e.printStackTrace();
-        }
-
+                    ParseResult parseResult = DOMParser.parse(file.getPath(), args[1]);
+                    System.out.println(parseResult);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
     }
 }
