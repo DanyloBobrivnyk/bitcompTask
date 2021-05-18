@@ -42,8 +42,7 @@ public class DOMParser {
 
                 HashMap<ParserFields, String> childNodesHashMap = parserFormat.getParentNodeChildNodes();
 
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("{");
+                StringBuilder stringBuilder = new StringBuilder("{");
 
                 for(ParserFields p : ParserFields.values())
                 {
@@ -51,11 +50,14 @@ public class DOMParser {
                     {
                         String name = childNodesHashMap.get(p);
 
-                        stringBuilder
-                                .append(enquote(p.toString()))
-                                .append(" : ")
-                                .append(enquote(getElementContextByName(name, element)))
-                                .append(", ");
+                        if(getElementContextByName(name, element).equalsIgnoreCase("no_value"))
+                        {
+                            buildJsonValue(stringBuilder, p.toString(), "no_value");
+                        }
+                        else
+                        {
+                            buildJsonValue(stringBuilder, p.toString(), getElementContextByName(name, element));
+                        }
                     }
                 }
                 String json = stringBuilder.substring(0, stringBuilder.length() - 2) + "}";
@@ -66,10 +68,26 @@ public class DOMParser {
         return parseResult;
     }
 
+    private static void buildJsonValue(StringBuilder stringBuilder,String key, String value)
+    {
+        stringBuilder
+                .append(enquote(key))
+                .append(" : ")
+                .append(enquote(value))
+                .append(", ");
+    }
+
     private static String enquote(String value){return "\"" + value + "\"";}
 
     public static String getElementContextByName(String elementName, Element element)
     {
-        return element.getElementsByTagName(elementName).item(0).getTextContent();
+        try
+        {
+            return element.getElementsByTagName(elementName).item(0).getTextContent();
+        }
+        catch (Exception e)
+        {
+            return "no_value";
+        }
     }
 }

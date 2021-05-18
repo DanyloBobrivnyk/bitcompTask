@@ -70,7 +70,7 @@ public class ParseResult {
 
     @Override
     public String toString() {
-        return "ParseResult{" + "areaNumber='" + areaNumber + '\''
+        return "ParseResult: \n{" + "areaNumber='" + areaNumber + '\''
                 + ", areaSize='" + areaSize + '\'' + ", landNumber='"
                 + landNumber + '\'' + ", precinctNumber='" + precinctNumber
                 + '\'' + ", districtNumber='" + districtNumber + '\''

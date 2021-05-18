@@ -9,13 +9,16 @@
         <Flurstueck gml:id="DENW55AL0000dufcFL">
             <gml:identifier codeSpace="urn:adv:oid:">urn:adv:oid:DENW55AL0000dufcFL</gml:identifier>
             <idflurst>DENW55AL0000dufc</idflurst>
-            <flstkennz>123456789_</flstkennz>
+            <flstkennz>05453300101559______</flstkennz>
             <land>Nordrhein-Westfalen</land>
             <landschl>05</landschl>
             <gemarkung>Lüghausen</gemarkung>
             <gemaschl>054533</gemaschl>
             <flur>001</flur>
             <flurschl>054533001</flurschl>
+            <flstnrzae>1559</flstnrzae>
+            <regbezirk>Köln</regbezirk>
+            <regbezschl>053</regbezschl>
             <kreis>Rheinisch-Bergischer Kreis</kreis>
             <kreisschl>05378</kreisschl>
             <gemeinde>Rösrath</gemeinde>

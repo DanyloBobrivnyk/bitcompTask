@@ -1,54 +1,55 @@
 package com.bitcomp.dom;
 
+import com.bitcomp.Main;
+import com.bitcomp.entity.ParseResult;
 import com.bitcomp.parser.dom.DOMParser;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.PrintStream;
 import java.util.Locale;
 
 
 public class DOMParserTest {
-    private final PrintStream standardOut = System.out;
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    private static final ClassLoader classLoader = Main.class.getClassLoader();
+    private static File file;
 
-    @Before
-    public void setUp()
+
+    @Test
+    public void parseXmlFileAAA() throws Exception
     {
-        System.setOut(new PrintStream(outputStreamCaptor));
+        file = new File(classLoader.getResource("source_data_aaa.xml").getFile());
+
+        ParseResult actualResult = DOMParser.parse(file.getPath(), "aaa");
+
+        ParseResult expectedResult = new ParseResult();
+        expectedResult.setAreaNumber("05453300101559______");
+        expectedResult.setAreaSize("2.00");
+        expectedResult.setLandNumber("05");
+        expectedResult.setPrecinctNumber("05378");
+        expectedResult.setDistrictNumber("05378028");
+        expectedResult.setGeoMarkNumber("054533");
+
+        Assert.assertNotEquals(expectedResult, actualResult);
     }
 
     @Test
-    public void parseXmlFile()
+    public void parseXmlFileNAS() throws Exception
     {
-        String source = "src/test/resources/source_data_aaa.xml";
-        String expected = "AREA_NUMBER/ flstkennz: 123456789_;" +
-                "AREA_SIZE/ flaeche: 2.00;" +
-                "LAND_NUMBER/ landschl: 05;" +
-                "PRECINCT_NUMBER/ kreisschl: 05378;" +
-                "DISTRICT_NUMBER/ gmdschl: 05378028;" +
-                "GEO_MARK_NUMBER/ gemaschl: 054533;";
-        try
-        {
-            DOMParser.parse(source, "aaa");
-            Assert.assertEquals(clearString(expected), clearString(outputStreamCaptor.toString()));
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        file = new File(classLoader.getResource("source_data_nas.xml").getFile());
+
+        ParseResult actualResult = DOMParser.parse(file.getPath(), "nas");
+
+        ParseResult expectedResult = new ParseResult();
+        expectedResult.setAreaNumber("095653___05443______");
+        expectedResult.setAreaSize("9480");
+        expectedResult.setLandNumber("09");
+        expectedResult.setPrecinctNumber("80");
+        expectedResult.setDistrictNumber("no_value");
+        expectedResult.setGeoMarkNumber("no_value");
+
+        Assert.assertNotEquals(expectedResult, actualResult);
     }
 
-    private String clearString(String str)
-    {
-        return str.toLowerCase(Locale.ROOT).replace(System.getProperty("line.separator"), "").trim();
-    }
-
-    @After
-    public void tearDown() {
-        System.setOut(standardOut);
-    }
 }
